@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="battle.cpp" />
+    <ClCompile Include="packet_def.cpp" />
+    <ClCompile Include="server.cpp" />
+    <ClCompile Include="system.cpp" />
+    <ClCompile Include="..\lib_json\json_reader.cpp">
+      <Filter>lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib_json\json_value.cpp">
+      <Filter>lib_json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lib_json\json_writer.cpp">
+      <Filter>lib_json</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="packet_def.h" />
+    <ClInclude Include="server.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="lib_json">
+      <UniqueIdentifier>{9d72a7ba-a43d-4763-9641-08dac8376ce5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

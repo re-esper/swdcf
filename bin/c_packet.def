@@ -1,0 +1,14 @@
+{
+    "set_flag_encode":
+        "F6 01 00 00 <flag:2> <eid:4> 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+    "set_flag":
+        "F7 01 00 00 <id:2> <flag:2>",
+    "load_cmd":
+        "F4 01 00 00 41 <index:1> <flagdata:1024>",
+    "save_cmd":
+        "F5 01 00 00 41 <index:1> 00 00",
+    "update_mdata":
+        "02 02 00 00 <monsterdata:1300> <fabaodata:108>",
+    "battle_event": 
+        "0A 02 00 00 00 <id1:1> <id2:2> <id3:2> 00 00"
+}

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "loader", "loader\loader.vcxproj", "{4341C2C5-4067-4E70-9D56-93F6BA86C3F0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "server", "server\server.vcxproj", "{5770BACA-B3AD-49B1-8733-F481934B5B54}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hook", "hook\hook.vcxproj", "{ACC26708-297E-4DB8-B1D0-668B6AD3776A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4341C2C5-4067-4E70-9D56-93F6BA86C3F0}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4341C2C5-4067-4E70-9D56-93F6BA86C3F0}.Debug|Win32.Build.0 = Debug|Win32
+		{4341C2C5-4067-4E70-9D56-93F6BA86C3F0}.Release|Win32.ActiveCfg = Release|Win32
+		{4341C2C5-4067-4E70-9D56-93F6BA86C3F0}.Release|Win32.Build.0 = Release|Win32
+		{5770BACA-B3AD-49B1-8733-F481934B5B54}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5770BACA-B3AD-49B1-8733-F481934B5B54}.Debug|Win32.Build.0 = Debug|Win32
+		{5770BACA-B3AD-49B1-8733-F481934B5B54}.Release|Win32.ActiveCfg = Release|Win32
+		{5770BACA-B3AD-49B1-8733-F481934B5B54}.Release|Win32.Build.0 = Release|Win32
+		{ACC26708-297E-4DB8-B1D0-668B6AD3776A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ACC26708-297E-4DB8-B1D0-668B6AD3776A}.Debug|Win32.Build.0 = Debug|Win32
+		{ACC26708-297E-4DB8-B1D0-668B6AD3776A}.Release|Win32.ActiveCfg = Release|Win32
+		{ACC26708-297E-4DB8-B1D0-668B6AD3776A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
