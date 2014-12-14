@@ -9,6 +9,6 @@ The simulation server of the Xuan Yuan Sword The Far of Cloud
 
 ### 运行需求
 -----------------------
-- <轩辕剑外传 云之遥> 简体中文版   
-- 脱壳的swdcf.exe, [http://pan.baidu.com/s/1mgmj6bA](
+    <轩辕剑外传 云之遥> 简体中文版   
+    脱壳的swdcf.exe, [http://pan.baidu.com/s/1mgmj6bA](
 http://pan.baidu.com/s/1mgmj6bA)   
