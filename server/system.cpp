@@ -1,4 +1,8 @@
 #include "server.h"
+#include <json/json.h>
+#include <fstream>
+#include <map>
+#include <vector>
 
 extern std::map<std::string, ServerPacket> s_packets;
 extern std::map<std::string, ClientPacket> c_packets;
@@ -79,6 +83,29 @@ DWORD IdDecode(const char* strid)
 	return id;
 }
 
+std::map<int, std::vector<unsigned char> > shop_datas;
+bool LoadShopDef()
+{
+    std::ifstream ifs;
+	Json::Reader reader;
+    Json::Value root;
+    ifs.open("shop.def");
+    if (!reader.parse(ifs, root, false)) return false;
+
+	const Json::Value::Members& pns = root.getMemberNames();
+	for (auto name : pns) {
+		std::vector<unsigned char> data;
+		readarray(root[name].asCString(), data);
+		data.push_back(0);
+		data.push_back(0);
+		int id = strtoul(name.c_str(), NULL, 16);
+		shop_datas[id] = data;
+	}
+	return true;
+}
+
+
+
 bool HandleSystemPacket(WORD protocol, const char* in_packet)
 {	
 	bool is_unknown = false;
@@ -156,6 +183,22 @@ bool HandleSystemPacket(WORD protocol, const char* in_packet)
 	case 0x0206: // ¾³½ç
 		CFSendPacket(s_packets["mirror"]);
 		break;
+	case 0x0208: { // ÉÌµê
+		ClientPacket& cp = c_packets["shopping"];
+		cp.parse(in_packet);
+		int shop_id = 0;
+		cp.get("id", &shop_id);
+		auto itr = shop_datas.find(shop_id);
+		if (itr == shop_datas.end()) {
+			shop_id = 1;
+			itr = shop_datas.begin();
+		}
+		ServerPacket& sp = s_packets["shopinfo"];
+		int cnt = itr->second.size() / 2 - 1;
+		sp.fill("count", &cnt);		
+		CFSendPacket(sp, itr->second);
+		break;
+	}
 	default:
 		is_unknown = true;
 	}

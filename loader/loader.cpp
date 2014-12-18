@@ -38,10 +38,10 @@ int CreateProcessWithDll(LPWSTR pwzCmdline, LPCWSTR pwzDir, LPCSTR szDll)
 	return 0;
 }
  
-//#define DEBUG_PACKET
+#define DEBUG_PACKET
 #ifdef DEBUG_PACKET
 const char injected[] = "packet.dll";
-const wchar_t host[] = L"C:\\SwdCF\\CH\\SwdCF.exe";
+const wchar_t host[] = L"d:\\SwdCF\\CH\\SwdCF.exe";
 #else
 const char injected[] = "hook.dll";
 //const wchar_t host[] = L"C:\\SwdCF\\CH\\USwdCF.exe";

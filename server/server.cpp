@@ -29,14 +29,36 @@ void CFSendPacket(const char* header, const unsigned char* body)
 	memcpy(__packet + 22, body, size - 22);
 	send(__sock, __packet, size, 0);
 }
-
-
 void CFSendPacket(const ServerPacket& sp)
 {
 	int size = 2 + *(WORD*)sp.packet;
 	memcpy(__packet, sp.packet, size);
 	send(__sock, __packet, size, 0);
 }
+void CFSendPacket(const ServerPacket& sp, const std::vector<unsigned char>& append)
+{
+	int size = 2 + *(WORD*)sp.packet;
+	memcpy(__packet, sp.packet, size);
+	int ap = append.size();
+	size += ap;
+	*(WORD*)__packet += ap;
+	*(DWORD*)(__packet + 10) += ap;
+	*(WORD*)(__packet + 18) += ap;	
+	memcpy(__packet + sp.size, &(append[0]), ap);	
+	send(__sock, __packet, size, 0);
+}
+void readarray(const char* p, std::vector<unsigned char>& out)
+{
+#define H2I(c) (c > '9' ? c - 'A' + 10 : c - '0')
+	int size = ceil(strlen(p) / 3.0);
+	out.resize(size);
+	const char* pp = p;
+	for (int i = 0; i < size; ++i) {
+		out[i] = H2I(*pp) * 0x10; pp++;
+		out[i] += H2I(*pp); pp++; pp++;
+	}
+}
+
 
 bool LoadSPacketDef()
 {
@@ -81,6 +103,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		ERR_EXIT("loading c_packet.def failed!");
 	if (!LoadBattleDef())
 		ERR_EXIT("loading battle.def failed!");
+	if (!LoadShopDef())
+		ERR_EXIT("loading shop.def failed!");
 
 	LoadUnitData();
 	LoadUserData();

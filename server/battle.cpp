@@ -80,18 +80,7 @@ void LoadUnitData()
 	printf("%d units loaded.\r\n", __unit_cnt);
 }
 
-void readarray(const char* p, std::vector<unsigned char>& out)
-{
-#define H2I(c) (c > '9' ? c - 'A' + 10 : c - '0')
-	int size = ceil(strlen(p) / 3.0);
-	out.resize(size);
-	const char* pp = p;
-	for (int i = 0; i < size; ++i) {
-		out[i] = H2I(*pp) * 0x10; pp++;
-		out[i] += H2I(*pp); pp++; pp++;
-	}
-}
-extern void LoadWarField();
+
 bool LoadBattleDef()
 {
     std::ifstream ifs;
