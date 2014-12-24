@@ -4,7 +4,7 @@ swdcf
 =======
 
 
-The simulation server of the Xuan Yuan Sword The Far of Cloud   
+A simulation server of the Xuan Yuan Sword The Far of Cloud   
 <轩辕剑外传 云之遥> 模拟服务器
 
 ### 运行需求
