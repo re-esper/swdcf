@@ -37,12 +37,11 @@ void set_bit(WORD bit, BOOL on)
 }
 
 DWORD IdDecode(const char* strid)
-{
-	DWORD id = 0;
-	DWORD a = *(BYTE*)strid;
-	DWORD b = *(BYTE*)(strid + 1);
-	DWORD c = *(BYTE*)(strid + 2);
-	if (b % 5 <= 3) {
+{	
+	int a = *(BYTE*)strid;
+	int b = *(BYTE*)(strid + 1);
+	int c = *(BYTE*)(strid + 2);
+	if (b % 5 <= 2) {
 		if (a < 0x30 || a > 0x39)
 			a = a - 0x41;
 		else
@@ -54,10 +53,7 @@ DWORD IdDecode(const char* strid)
 		else
 			a = a - 0x16;
 	}
-	id = c & 0x80000001;
-	if ((c & 0x80000001) < 0)
-		id = ((c & 0x80000001) - 1) | 0xFFFFFFFE;
-	if (0 == id) {
+	if (c % 2 == 0) {
 		if (b < 0x30 || b > 0x39)
 			b = b - 0x41;
 		else
@@ -78,9 +74,8 @@ DWORD IdDecode(const char* strid)
 	}
 	else {		
 		c = 0x7A - c;
-	}
-	id = a + 0x24 * (b + 0x24 * c);
-	return id;
+	}	
+	return a + 0x24 * (b + 0x24 * c);
 }
 
 std::map<int, std::vector<unsigned char> > shop_datas;
@@ -167,7 +162,7 @@ bool HandleSystemPacket(WORD protocol, const char* in_packet)
 		WORD flag = 0;
 		char eid[4] = {0};
 		cp.get("flag", &flag);
-		cp.get("eid", eid);
+		cp.get("eid", eid);		
 		set_bit(LOWORD(IdDecode(eid)), flag);
 		break;
 	}
